@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - '6'
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install --loglevel=error --no-progress
+
+script:
+  - npm run test
+  - npm run build
+
+deploy:
+  - provider: gcs
+    access_key_id: GOOGJUXOZWZHH6HOYQEG
+    secret_access_key:
+      secure: E3R7lCBQD8/Ib3KnY7eQqIjt/DR/IAq3R2MqVEIby/S+sk/1eOWhsCL12UV5W/FoGw1NmDFhrqZ827711AoO3mMkzXDO4f5wVoV4uywQkCwoLW8KJO5+UACApEpF0TF97fQW1eNNwaWYpjwEyqboq0Otq+XBuZC0mSp+ZBDZbIwWWterWZlsSucKLxBV7WrtxhZt+VEZTCZRQ9uhExNjExH04Aj8ZSLg/HLSxhQFHIr62jyMqStuNK4kHVlFWwiIXTxk7INDxVHHzKeGBMVJ/al9NHMUAFk8HIesDePHjUXTZy9Qlcl6uR9WtktWk8UA9s8M+MSRAIr4vvhW4h/1FhkzSmOg9NfflxgN1n0qlGdzcnV8mfjiRbcU9Ie/xfQkuyUc1vpa0NOjhKsaeGvksk3ryglhYwlvCfvy0ltDV3mz+DvpgIQ6Jej9h+L7ik2coq/q0uu9UXDS7hFh7IAMhu4O0DL6ifVsTHw1fFzxBsAKfSY9zUMlagUtxkGgHvP5KX1hQ8ECjJ6xpCsYiLXXGg6NOL02AA7aGCtXE/7n613mgoffzYRUFXmLnJPHSM6FGxT7wYyGW2ZHgyk4eCz7FuyNu617L27UZP4ncPo+K1do1mmUkoQ8He5ISk705AP5xo75bh2cMUJolyROW+gEDyC85Ug9n202pgLqnPgqumE=
+    bucket: skomm.kolibri.is
+    skip_cleanup: true
+    local-dir: app
+    acl: public-read
+    cache_control: "no-cache"
+    on:
+      branch: master
+      repo: benediktvaldez/Disgraced

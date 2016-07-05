@@ -1,0 +1,28 @@
+block vars
+  - var title = content.meta[0].title
+  - var description = content.meta[0].description
+
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+
+  title=title
+
+  meta(name="description" content=description)
+  meta(name="theme-color" content="#78cdd1")
+
+  //- link(rel='icon' type='image/png' href='/favicon.png')
+  link(rel='stylesheet' href='/styles/styles.css')
+
+  meta(property='og:title' content=title)
+  meta(property='og:site_name' content=title)
+  meta(property='og:url' content='#{env.url}')
+  meta(property='og:description' content=description)
+  meta(property='og:type' content='website')
+  meta(property='og:image' content=content.meta[0].image.url)
+
+  //- meta(name="twitter:card" content="summary_large_image")
+  meta(name="twitter:site" content="@hellokolibri")
+  meta(name="twitter:title" content=title)
+  meta(name="twitter:description" content=description)
+  meta(name="twitter:image" content=content.meta[0].image.url)
