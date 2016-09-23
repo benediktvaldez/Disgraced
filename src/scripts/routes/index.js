@@ -1,4 +1,7 @@
 
+const frontRoute = require('./front')
+
 module.exports = {
-  load: () => {},
+  [frontRoute.path]: frontRoute,
+  [`${frontRoute.path}index.html`]: frontRoute,
 }

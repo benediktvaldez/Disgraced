@@ -1,19 +1,17 @@
 // Polyfills
 require('es6-promise')
-require('whatwg-fetch')
+const $ = require('jquery')
 
-// const analytics = require('./modules/analytics')
-const domready = require('./modules/domready')
-const initRouter = require('./init/router')
+// const analytics = require('@kolibridev/components/lib/analytics')
+// analytics.init('UA-XXXXXXXX-1')
+
+const domready = require('@kolibridev/components/lib/domready')
+const router = require('./router')
 
 // Routes
-const indexRoute = require('./routes/index')
-
-// analytics('UA-77889324-1')
-initRouter({
-  '/': indexRoute,
-})
+const routes = require('./routes')
+router(routes)
 
 domready(() => {
-  setTimeout(() => document.querySelector('html').classList.remove('loading'), 500)
+  setTimeout(() => $('html').removeClass('loading'), 750)
 })
